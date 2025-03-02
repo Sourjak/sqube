@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQUBE - Shaping Skills... Sparking Success...</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3ece6e;
+            --secondary-color: #1b421d;
+            --text-color: #333333;
+            --background-dark: #1b421d;
+            --background-light: #f5f5f5;
+            --accent-color: #ddeedd;
+            --card-bg: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark {
+            --primary-color: #4ede7e;
+            --secondary-color: #2a5a2c;
+            --text-color: #e0e0e0;
+            --background-dark: #1b2e1d;
+            --background-light: #1a1a1a;
+            --accent-color: #2c3c2c;
+            --card-bg: #232323;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+        
+        body {
+            background-color: var(--background-light);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        /* Theme Toggle */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            left: 200px; /* Positioning to left of home button */
+            z-index: 1001;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+        
+        .theme-toggle i {
+            font-size: 24px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--background-dark);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--background-dark) 0%, #2a5a2c 50%, #1b421d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-content img {
+            max-width: 300px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+        }
+        
+        .hero-content h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+            min-height: 2.5rem;
+        }
+        
+        .typewriter-text {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 2px solid var(--primary-color);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color) }
+        }
+        
+        .cta-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(62, 206, 110, 0.4);
+        }
+        
+        .cta-button:hover {
+            background-color: #2daa57;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(62, 206, 110, 0.5);
+        }
+        
+        /* 3D Animation */
+        .cube-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .cube {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            transform-style: preserve-3d;
+            animation: rotate 20s infinite linear;
+            cursor: grab;
+        }
+        
+        .cube:nth-child(1) {
+            top: 15%;
+            left: 15%;
+        }
+        
+        .cube:nth-child(2) {
+            top: 45%;
+            left: 75%;
+        }
+        
+        .cube:nth-child(3) {
+            top: 70%;
+            left: 25%;
+        }
+        
+        .cube:nth-child(4) {
+            top: 25%;
+            left: 65%;
+        }
+        
+        .cube:nth-child(5) {
+            top: 60%;
+            left: 55%;
+        }
+        
+        .cube:nth-child(6) {
+            top: 80%;
+            left: 80%;
+        }
+        
+        .cube-face {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            background-color: rgba(62, 206, 110, 0.2);
+            border: 2px solid rgba(62, 206, 110, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            backface-visibility: visible;
+            box-shadow: 0 0 15px rgba(62, 206, 110, 0.3);
+        }
+        
+        .face-front { transform: translateZ(65px); }
+        .face-back { transform: rotateY(180deg) translateZ(65px); }
+        .face-right { transform: rotateY(90deg) translateZ(65px); }
+        .face-left { transform: rotateY(-90deg) translateZ(65px); }
+        .face-top { transform: rotateX(90deg) translateZ(65px); }
+        .face-bottom { transform: rotateX(-90deg) translateZ(65px); }
+        
+        @keyframes rotate {
+            0% { transform: rotateX(0) rotateY(0) rotateZ(0); }
+            100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+        }
+        
+        /* Sections */
+        section {
+            padding: 5rem 10%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+        }
+        
+        /* Founders Section */
+        #founders {
+            background-color: var(--card-bg);
+        }
+        
+        .founders-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .founder-card {
+            background-color: var(--accent-color);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px var(--shadow-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .founder-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px var(--shadow-color);
+        }
+        
+        .founder-img {
+            height: 250px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .founder-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .founder-card:hover .founder-img img {
+            transform: scale(1.05);
+        }
+        
+        .founder-info {
+            padding: 1.8rem;
+        }
+        
+        .founder-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .founder-info h4 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .founder-info p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            font-style: italic;
+        }
+        
+        .motto {
+            text-align: center;
+            font-size: 1.6rem;
+            font-style: italic;
+            margin: 4rem auto;
+            color: var(--secondary-color);
+            padding: 2.5rem;
+            background-color: var(--accent-color);
+            border-radius: 15px;
+            max-width: 900px;
+            box-shadow: 0 5px 25px var(--shadow-color);
+            line-height: 1.6;
+        }
+        
+        /* Sports Section */
+        #sports {
+            background-color: var(--accent-color);
+        }
+        
+        .sports-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .sport-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px var(--shadow-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .sport-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px var(--shadow-color);
+        }
+        
+        .sport-img {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .sport-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .sport-card:hover .sport-img img {
+            transform: scale(1.05);
+        }
+        
+        .sport-info {
+            padding: 1.8rem;
+        }
+        
+        .sport-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .sport-info p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        /* Contact Section */
+        #contact {
+            background-color: var(--card-bg);
+            text-align: center;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 600px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            background-color: var(--accent-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: transform 0.3s;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-item i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+        
+        .contact-item div h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--secondary-color);
+        }
+        
+        .contact-item div p, .contact-item div a {
+            color: var(--text-color);
+            text-decoration: none;
+            line-height: 1.5;
+        }
+        
+        .connect-btn-container {
+            margin-top: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .email-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
+            border: 2px solid var(--accent-color);
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+        
+        .email-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(62, 206, 110, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--background-dark);
+            color: white;
+            padding: 4rem 10% 3rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .footer-logo img {
+            height: 60px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 2.5rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .theme-toggle {
+                position: absolute;
+                top: 20px;
+                right: 80px; /* Position beside mobile menu button */
+                left: auto;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: var(--background-dark);
+                padding: 1.5rem;
+                gap: 1.5rem;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hero-content img {
+                max-width: 220px;
+            }
+            
+            section {
+                padding: 3rem 5%;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cube {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .cube-face {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .face-front, .face-back { transform: translateZ(50px); }
+            .face-right, .face-left { transform: rotateY(90deg) translateZ(50px); }
+            .face-top, .face-bottom { transform: rotateX(90deg) translateZ(50px); }
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+   
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <img src="images/HL.png" alt="SQUBE Logo">
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#hero">Home</a>
+            <a href="#founders">Founders</a>
+            <a href="#sports">Sports</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="cube-container" id="cubeContainer">
+            <div class="cube" id="cube1">
+                <div class="cube-face face-front">🏀</div>
+                <div class="cube-face face-back">♞</div>
+                <div class="cube-face face-right">🏓</div>
+                <div class="cube-face face-left">🎾</div>
+                <div class="cube-face face-top">🏈</div>
+                <div class="cube-face face-bottom">⚽</div>
+            </div>
+            <div class="cube" id="cube2">
+                <div class="cube-face face-front">🏀</div>
+                <div class="cube-face face-back">♞</div>
+                <div class="cube-face face-right">🏓</div>
+                <div class="cube-face face-left">🎾</div>
+                <div class="cube-face face-top">🏈</div>
+                <div class="cube-face face-bottom">⚽</div>
+            </div>
+            <div class="cube" id="cube3">
+                <div class="cube-face face-front">🏀</div>
+                <div class="cube-face face-back">♞</div>
+                <div class="cube-face face-right">🏓</div>
+                <div class="cube-face face-left">🎾</div>
+                <div class="cube-face face-top">🏈</div>
+                <div class="cube-face face-bottom">⚽</div>
+            </div>
+            <div class="cube" id="cube4">
+                <div class="cube-face face-front">🏐</div>
+                <div class="cube-face face-back">🏊</div>
+                <div class="cube-face face-right">🏏</div>
+                <div class="cube-face face-left">🏸</div>
+                <div class="cube-face face-top">🏑</div>
+                <div class="cube-face face-bottom">🏉</div>
+            </div>
+            <div class="cube" id="cube5">
+                <div class="cube-face face-front">🎯</div>
+                <div class="cube-face face-back">🎱</div>
+                <div class="cube-face face-right">🥏</div>
+                <div class="cube-face face-left">⛳</div>
+                <div class="cube-face face-top">🥊</div>
+                <div class="cube-face face-bottom">🏄</div>
+            </div>
+            <div class="cube" id="cube6">
+                <div class="cube-face face-front">🚴</div>
+                <div class="cube-face face-back">🏋️</div>
+                <div class="cube-face face-right">⚾</div>
+                <div class="cube-face face-left">🤾</div>
+                <div class="cube-face face-top">🏂</div>
+                <div class="cube-face face-bottom">🤺</div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <img src="images/HL.png" alt="SQUBE Logo">
+            <h2 id="typewriter"></h2>
+            <a href="#contact" class="cta-button">Contact Us</a>
+        </div>
+    </section>
+    
+    <!-- Founders Section -->
+    <section id="founders">
+        <div class="section-title">
+            <h2>Our Founders</h2>
+            <p>Meet the visionary team behind SQUBE who are passionate about transforming sports culture in India.</p>
+        </div>
+        <div class="founders-container">
+            <div class="founder-card">
+                <div class="founder-img">
+                    <img src="images/F1.png" alt="Founder 1">
+                </div>
+                <div class="founder-info">
+                    <h3>Subhadeep Dolai</h3>
+                    <h4>Co-Founder & CEO</h4>
+                    <p>"Our vision is to create a world where everyone has access to quality sports education that not only develops athletic ability but also builds character and life skills."</p>
+                </div>
+            </div>
+            <div class="founder-card">
+                <div class="founder-img">
+                    <img src="images/F2.png" alt="Founder 2">
+                </div>
+                <div class="founder-info">
+                    <h3>Sourjak Das</h3>
+                    <h4>Co-Founder & CMO</h4>
+                    <p>"We believe in the transformative power of sports to teach discipline, teamwork, and perseverance - skills that are valuable both on and off the field."</p>
+                </div>
+            </div>
+            <div class="founder-card">
+                <div class="founder-img">
+                    <img src="images/F3.png" alt="Founder 3">
+                </div>
+                <div class="founder-info">
+                    <h3>Sutavra Mitra</h3>
+                    <h4>Co-Founder & CPO</h4>
+                    <p>"Our approach integrates cutting-edge training methodologies with traditional wisdom to create a holistic sports education experience for all our students."</p>
+                </div>
+            </div>
+        </div>
+        <div class="motto">
+            "Empowering individuals through sports education to achieve excellence in athletics and life."
+        </div>
+    </section>
+    
+    <!-- Sports Section -->
+    <section id="sports">
+        <div class="section-title">
+            <h2>Our Sports Programs</h2>
+            <p>Discover the range of sports disciplines we offer expert coaching and education in.</p>
+        </div>
+        <div class="sports-container">
+            <div class="sport-card">
+                <div class="sport-img">
+                    <img src="images/FO.png" alt="Football">
+                </div>
+                <div class="sport-info">
+                    <h3>Football</h3>
+                    <p>Our comprehensive football program covers all aspects of the game from basic skills to advanced tactics, suitable for all age groups and skill levels.</p>
+                </div>
+            </div>
+            <div class="sport-card">
+                <div class="sport-img">
+                    <img src="images/BA.png" alt="Basketball">
+                </div>
+                <div class="sport-info">
+                    <h3>Basketball</h3>
+                    <p>Learn the fundamentals of basketball through our structured curriculum that focuses on individual skills, team play, and basketball IQ.</p>
+                </div>
+            </div>
+            <div class="sport-card">
+                <div class="sport-img">
+                    <img src="images/TE.png" alt="Badminton">
+                </div>
+                <div class="sport-info">
+                    <h3>Badminton</h3>
+                    <p>Our badminton program develops agility, precision, and quick reflexes through structured training sessions suitable for players of all skill levels.</p>
+                </div>
+            </div>
+            <div class="sport-card">
+                <div class="sport-img">
+                    <img src="images/CH.png" alt="Chess">
+                </div>
+                <div class="sport-info">
+                    <h3>Chess</h3>
+                    <p>Develop strategic thinking, concentration, and problem-solving skills through our comprehensive chess training program for all levels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Get in touch with us to learn more about our programs or to start your sports education journey.</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i>📱</i>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+91 75968 59368</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i>✉️</i>
+                    <div>
+                        <h3>Email</h3>
+                    <p>mitrasutavra65@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="connect-btn-container">
+               
+                <a href="https://forms.gle/3Ssdsmp8n98ijFnw9" target="_blank" class="cta-button">Connect With Us</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/HL.png" alt="SQUBE Logo">
+            </div>
+            <div class="footer-links">
+                <a href="#hero">Home</a>
+                <a href="#founders">Founders</a>
+                <a href="#sports">Sports</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 SQUBE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        themeToggle.addEventListener('click', function() {
+            if (htmlElement.className === 'light') {
+                htmlElement.className = 'dark';
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.className = 'light';
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            htmlElement.className = 'dark';
+            themeToggle.textContent = '☀️';
+        }
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+
+        // Typewriter effect for tagline
+        const typewriterElement = document.getElementById('typewriter');
+        const tagline = "Shaping Skills, Sparking Success";
+        let i = 0;
+        let isDeleting = false;
+        let txt = '';
+        let speed = 100;
+
+        function typeWriter() {
+            if (!isDeleting && i <= tagline.length) {
+                txt = tagline.substring(0, i);
+                typewriterElement.innerHTML = txt + '<span class="typewriter-text">|</span>';
+                i++;
+                setTimeout(typeWriter, speed);
+            } else if (isDeleting && i >= 0) {
+                txt = tagline.substring(0, i);
+                typewriterElement.innerHTML = txt + '<span class="typewriter-text">|</span>';
+                i--;
+                setTimeout(typeWriter, speed / 2);
+            } else if (i > tagline.length) {
+                // Pause at the end before deleting
+                isDeleting = true;
+                setTimeout(typeWriter, 2000);
+            } else {
+                // Pause at the beginning before typing again
+                isDeleting = false;
+                i = 0;
+                setTimeout(typeWriter, 1000);
+            }
+        }
+
+        // Start the typewriter effect
+        window.onload = function() {
+            typeWriter();
+            setupCubes();
+        };
+
+        // Interactive 3D Cubes
+        function setupCubes() {
+            const cubes = document.querySelectorAll('.cube');
+            const cubeContainer = document.getElementById('cubeContainer');
+            
+            cubes.forEach((cube, index) => {
+                // Random initial rotation values
+                const rotateX = Math.random() * 360;
+                const rotateY = Math.random() * 360;
+                const rotateZ = Math.random() * 360;
+                
+                // Apply initial rotation
+                cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
+                
+                // Randomize animation speed and direction
+                const duration = 15 + Math.random() * 10; // Between 15-25 seconds
+                const direction = Math.random() > 0.5 ? 'normal' : 'reverse';
+                
+                cube.style.animation = `rotate ${duration}s infinite linear ${direction}`;
+                
+                // Make cubes interactive
+                let isDragging = false;
+                let previousX = 0;
+                let previousY = 0;
+                let rotationX = rotateX;
+                let rotationY = rotateY;
+                let rotationZ = rotateZ;
+                
+                // Stop animation when interacting
+                cube.addEventListener('mousedown', (e) => {
+                    e.preventDefault();
+                    isDragging = true;
+                    previousX = e.clientX;
+                    previousY = e.clientY;
+                    cube.style.animation = 'none';
+                    cube.style.cursor = 'grabbing';
+                });
+                
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    
+                    const deltaX = e.clientX - previousX;
+                    const deltaY = e.clientY - previousY;
+                    
+                    rotationY += deltaX * 0.5;
+                    rotationX -= deltaY * 0.5;
+                    
+                    cube.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg) rotateZ(${rotationZ}deg)`;
+                    
+                    previousX = e.clientX;
+                    previousY = e.clientY;
+                });
+                
+                document.addEventListener('mouseup', () => {
+                    if (isDragging) {
+                        isDragging = false;
+                        cube.style.cursor = 'grab';
+                        
+                        // Resume animation after a short delay
+                        setTimeout(() => {
+                            if (!isDragging) {
+                                cube.style.animation = `rotate ${duration}s infinite linear ${direction}`;
+                            }
+                        }, 2000);
+                    }
+                });
+                
+                // Touch events for mobile
+                cube.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    isDragging = true;
+                    previousX = e.touches[0].clientX;
+                    previousY = e.touches[0].clientY;
+                    cube.style.animation = 'none';
+                });
+                
+                document.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    
+                    const deltaX = e.touches[0].clientX - previousX;
+                    const deltaY = e.touches[0].clientY - previousY;
+                    
+                    rotationY += deltaX * 0.5;
+                    rotationX -= deltaY * 0.5;
+                    
+                    cube.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg) rotateZ(${rotationZ}deg)`;
+                    
+                    previousX = e.touches[0].clientX;
+                    previousY = e.touches[0].clientY;
+                });
+                
+                document.addEventListener('touchend', () => {
+                    if (isDragging) {
+                        isDragging = false;
+                        
+                        // Resume animation after a short delay
+                        setTimeout(() => {
+                            if (!isDragging) {
+                                cube.style.animation = `rotate ${duration}s infinite linear ${direction}`;
+                            }
+                        }, 2000);
+                    }
+                });
+            });
+            
+            // Make cube container interactive
+            cubeContainer.style.pointerEvents = 'auto';
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Offset for nav bar
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animation
+        const observeElements = document.querySelectorAll('.founder-card, .sport-card, .contact-item');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Add initial styling and observe elements
+        observeElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
